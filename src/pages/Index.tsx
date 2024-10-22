@@ -1,9 +1,17 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleStart = () => {
+    toast.success("Bem-vindo à jornada de criação!");
+    navigate("/onboarding");
+  };
+
   return (
     <Layout>
       <div className="min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center space-y-8">
@@ -17,7 +25,7 @@ const Index = () => {
             AKALIBRE FLOWAKA
           </h1>
           <p className="text-muted-foreground text-lg md:text-xl">
-            Experimente o futuro do fluxo digital
+            Crie seu app dos sonhos sem precisar programar
           </p>
         </motion.div>
 
@@ -27,26 +35,35 @@ const Index = () => {
           transition={{ delay: 0.4 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl"
         >
-          <Card className="p-6 hover:shadow-lg transition-shadow bg-gradient-to-br from-background to-muted">
-            <h3 className="text-xl font-semibold mb-2">Temas Personalizáveis</h3>
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-shadow bg-gradient-to-br from-background to-muted"
+          >
+            <h3 className="text-xl font-semibold mb-2">Explore Temas</h3>
             <p className="text-muted-foreground">
-              Escolha entre temas claro, escuro e neon para combinar com seu estilo
+              Personalize cores e estilos para criar a identidade perfeita
             </p>
-          </Card>
+          </motion.div>
 
-          <Card className="p-6 hover:shadow-lg transition-shadow bg-gradient-to-br from-background to-muted">
-            <h3 className="text-xl font-semibold mb-2">Design Responsivo</h3>
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-shadow bg-gradient-to-br from-background to-muted"
+          >
+            <h3 className="text-xl font-semibold mb-2">Design Intuitivo</h3>
             <p className="text-muted-foreground">
-              Perfeitamente adaptado para todos os tamanhos de tela
+              Arraste e solte elementos para criar layouts únicos
             </p>
-          </Card>
+          </motion.div>
 
-          <Card className="p-6 hover:shadow-lg transition-shadow bg-gradient-to-br from-background to-muted">
-            <h3 className="text-xl font-semibold mb-2">Interface Moderna</h3>
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-shadow bg-gradient-to-br from-background to-muted"
+          >
+            <h3 className="text-xl font-semibold mb-2">Funcionalidades</h3>
             <p className="text-muted-foreground">
-              Interface elegante e intuitiva com animações suaves
+              Escolha recursos incríveis para seu app
             </p>
-          </Card>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -55,11 +72,12 @@ const Index = () => {
           transition={{ delay: 0.6 }}
           className="flex gap-4"
         >
-          <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
-            Começar Agora
-          </Button>
-          <Button size="lg" variant="outline">
-            Saiba Mais
+          <Button 
+            size="lg" 
+            onClick={handleStart}
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+          >
+            Iniciar Jornada
           </Button>
         </motion.div>
       </div>
