@@ -17,7 +17,7 @@ const Index = () => {
             AKALIBRE FLOWAKA
           </h1>
           <p className="text-muted-foreground text-lg md:text-xl">
-            Experience the future of digital flow
+            Experimente o futuro do fluxo digital
           </p>
         </motion.div>
 
@@ -28,23 +28,23 @@ const Index = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl"
         >
           <Card className="p-6 hover:shadow-lg transition-shadow bg-gradient-to-br from-background to-muted">
-            <h3 className="text-xl font-semibold mb-2">Customizable Themes</h3>
+            <h3 className="text-xl font-semibold mb-2">Temas Personalizáveis</h3>
             <p className="text-muted-foreground">
-              Choose between light, dark, and neon themes to match your style
+              Escolha entre temas claro, escuro e neon para combinar com seu estilo
             </p>
           </Card>
 
           <Card className="p-6 hover:shadow-lg transition-shadow bg-gradient-to-br from-background to-muted">
-            <h3 className="text-xl font-semibold mb-2">Responsive Design</h3>
+            <h3 className="text-xl font-semibold mb-2">Design Responsivo</h3>
             <p className="text-muted-foreground">
-              Perfectly adapted for all screen sizes
+              Perfeitamente adaptado para todos os tamanhos de tela
             </p>
           </Card>
 
           <Card className="p-6 hover:shadow-lg transition-shadow bg-gradient-to-br from-background to-muted">
-            <h3 className="text-xl font-semibold mb-2">Modern UI</h3>
+            <h3 className="text-xl font-semibold mb-2">Interface Moderna</h3>
             <p className="text-muted-foreground">
-              Sleek and intuitive user interface with smooth animations
+              Interface elegante e intuitiva com animações suaves
             </p>
           </Card>
         </motion.div>
@@ -56,10 +56,10 @@ const Index = () => {
           className="flex gap-4"
         >
           <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
-            Get Started
+            Começar Agora
           </Button>
           <Button size="lg" variant="outline">
-            Learn More
+            Saiba Mais
           </Button>
         </motion.div>
       </div>
