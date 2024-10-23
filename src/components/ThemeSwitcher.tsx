@@ -12,7 +12,7 @@ import { toast } from "sonner";
 export function ThemeSwitcher() {
   const { setTheme } = useTheme();
 
-  const handleThemeChange = (theme: string) => {
+  const handleThemeChange = (theme: "light" | "dark" | "neon" | "system") => {
     setTheme(theme);
     toast.success(`Tema ${theme === 'light' ? 'claro' : theme === 'dark' ? 'escuro' : 'neon'} ativado!`);
   };
