@@ -38,12 +38,16 @@ export const templates: Template[] = [
   },
 ];
 
+export type StudyTheme = "programming" | "design" | "data" | "languages" | "music" | "general" | null;
+
 export interface EducationPreferences {
   courseType: "video" | "podcast" | "text" | null;
   gamification: "badges" | "quizzes" | "leaderboard" | null;
   schedule: "flexible" | "fixed" | "hybrid" | null;
   interaction: "individual" | "group" | "mentored" | null;
   hasCustomizedWidgets?: boolean;
+  studyThemes?: StudyTheme[];
+  suggestedWidgets?: string[];
 }
 
 export type WidgetType = "chat" | "calendar" | "notes" | "timer" | null;
