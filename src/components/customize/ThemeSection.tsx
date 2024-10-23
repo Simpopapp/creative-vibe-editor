@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Moon, Sun, Palette } from "lucide-react";
-import { useTheme } from "@/components/theme-provider";
 import { toast } from "sonner";
 import { useAppSound } from "@/hooks/useAppSound";
 
