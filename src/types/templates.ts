@@ -36,7 +36,6 @@ export const templates: Template[] = [
       features: ["Feature 1", "Feature 2"],
     },
   },
-  // ... add more templates as needed
 ];
 
 export interface EducationPreferences {
@@ -44,4 +43,7 @@ export interface EducationPreferences {
   gamification: "badges" | "quizzes" | "leaderboard" | null;
   schedule: "flexible" | "fixed" | "hybrid" | null;
   interaction: "individual" | "group" | "mentored" | null;
+  hasCustomizedWidgets?: boolean;
 }
+
+export type WidgetType = "chat" | "calendar" | "notes" | "timer" | null;

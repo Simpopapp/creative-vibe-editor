@@ -13,6 +13,7 @@ import ColorPaletteCustomize from "./pages/ColorPaletteCustomize";
 import EntertainmentCustomize from "./pages/EntertainmentCustomize";
 import EducationCustomize from "./pages/EducationCustomize";
 import HealthCustomize from "./pages/HealthCustomize";
+import WidgetCustomize from "./pages/WidgetCustomize";
 import Preview from "./pages/Preview";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/customize/entertainment" element={<EntertainmentCustomize />} />
             <Route path="/customize/education" element={<EducationCustomize />} />
             <Route path="/customize/health" element={<HealthCustomize />} />
+            <Route path="/customize/widgets" element={<WidgetCustomize />} />
             <Route path="/customize/preview" element={<Preview />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
