@@ -1,118 +1,81 @@
 # 🎨 Creative Vibe Editor
 
-Uma plataforma interativa e imersiva que guia usuários através de uma jornada de descoberta para criar seus próprios aplicativos, sem necessidade de conhecimento técnico.
+## 🚀 Guia de Construção Passo a Passo
 
-## 🌟 Visão Geral
+Para construir este projeto do zero de forma estruturada, siga as mensagens abaixo em ordem. Copie e envie cada mensagem para o assistente AI, aguarde a implementação completa, e então prossiga para a próxima etapa:
 
-O Creative Vibe Editor é uma ferramenta inovadora que combina design intuitivo, interações dinâmicas e feedback em tempo real para ajudar usuários a visualizarem e personalizarem seus aplicativos dos sonhos. Através de uma experiência gamificada e envolvente, os usuários exploram diferentes estilos, interações e preferências visuais, culminando em uma descrição personalizada de seu aplicativo ideal.
-
-## ✨ Características Principais
-
-- **Experiência Imersiva**: Animações fluidas e feedback sonoro em tempo real
-- **Design Responsivo**: Interface adaptável para todos os dispositivos
-- **Temas Dinâmicos**: Suporte para temas claro, escuro e neon
-- **Personalização Intuitiva**: Interface drag-and-drop e controles interativos
-- **Feedback Visual**: Notificações toast e indicadores de progresso
-- **Suporte Mobile**: Compatibilidade com Android e iOS via Capacitor
-
-## 🚀 Começando
-
-### Pré-requisitos
-
-- Node.js (versão 16 ou superior)
-- npm, yarn ou bun
-
-### Instalação
-
-```bash
-# Clone o repositório
-git clone https://github.com/Simpopapp/creative-vibe-editor.git
-cd creative-vibe-editor
-
-# Instale as dependências
-npm install
-# ou
-yarn
-# ou
-bun install
-
-# Inicie o servidor de desenvolvimento
-npm run dev
-# ou
-yarn dev
-# ou
-bun dev
+### 1. Configuração Inicial
+```
+"Crie um novo projeto React com Vite usando TypeScript, configurando Tailwind CSS, shadcn/ui, e as dependências essenciais para routing e gerenciamento de estado. Configure também os temas claro/escuro."
 ```
 
-### Build Mobile (Opcional)
-
-```bash
-# Instale o Capacitor globalmente
-npm install -g @capacitor/cli
-
-# Faça o build do projeto
-npm run build
-
-# Adicione plataformas
-npx cap add android
-npx cap add ios
-
-# Sincronize o build
-npx cap sync
+### 2. Estrutura Base
+```
+"Configure a estrutura base do projeto criando os diretórios principais (components, pages, hooks, utils, types) e implemente o layout base com navbar responsiva."
 ```
 
-## 🛠️ Tecnologias
+### 3. Sistema de Temas
+```
+"Implemente o sistema de temas (claro/escuro/neon) com persistência local e animações de transição. Crie também o componente ThemeSwitcher."
+```
 
-- **React**: Framework principal
-- **Vite**: Build tool e desenvolvimento
-- **Tailwind CSS**: Estilização
-- **Framer Motion**: Animações
-- **Shadcn/UI**: Componentes de UI
-- **Capacitor**: Suporte mobile
-- **React Router**: Navegação
-- **TanStack Query**: Gerenciamento de estado
+### 4. Sistema de Rotas
+```
+"Configure o sistema de rotas com React Router, implementando as páginas principais: Home, Onboarding, e Customize. Adicione navegação fluida com animações de transição."
+```
 
-## 🎯 Roadmap
+### 5. Componentes Base
+```
+"Crie os componentes base reutilizáveis: Button, Card, Input, e Layout. Implemente variantes e animações usando Framer Motion."
+```
 
-### Fase Atual
-- [x] Sistema de temas
-- [x] Navegação fluida
-- [x] Feedback sonoro e visual
-- [x] Componentes base
-- [x] Layout responsivo
+### 6. Sistema de Feedback
+```
+"Implemente o sistema de feedback com toasts, sons de interação e indicadores visuais de progresso."
+```
 
-### Próximas Etapas
-- [ ] Sistema de exportação de configurações
-- [ ] Mais opções de personalização
-- [ ] Previews em tempo real
-- [ ] Templates pré-configurados
-- [ ] Integração com serviços externos
-- [ ] Sistema de compartilhamento
+### 7. Fluxo de Customização
+```
+"Crie o fluxo de customização com as páginas: ThemeLocation, LayoutCustomize, FontCustomize, e Preview. Implemente a lógica de persistência de preferências."
+```
+
+### 8. Sistema de Métricas
+```
+"Implemente o sistema de métricas de qualidade e performance com os dashboards e gráficos usando Recharts."
+```
+
+### 9. Sistema de Conquistas
+```
+"Crie o sistema de conquistas com tracking de progresso e notificações."
+```
+
+### 10. Testes e Otimização
+```
+"Adicione testes unitários essenciais e implemente otimizações de performance."
+```
+
+## 🛠️ Benefícios desta Abordagem
+
+- Desenvolvimento incremental e estruturado
+- Melhor organização e manutenibilidade do código
+- Redução de erros e conflitos
+- Facilidade de teste e debug
+- Melhor experiência de desenvolvimento
+
+## 📝 Notas Importantes
+
+- Siga a ordem exata das mensagens
+- Aguarde a conclusão de cada etapa antes de prosseguir
+- Teste cada funcionalidade após sua implementação
+- Mantenha o código limpo e bem documentado
+- Use componentes pequenos e focados
+- Implemente error boundaries e tratamento de erros
+- Mantenha a consistência no estilo de código
 
 ## 🤝 Contribuindo
 
-Contribuições são bem-vindas! Por favor, leia nosso guia de contribuição antes de submeter pull requests.
+Veja o guia de contribuição para detalhes sobre como participar do projeto.
 
-1. Fork o projeto
-2. Crie sua branch de feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+## 📄 Licença
 
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 🌟 Visão Futura
-
-O Creative Vibe Editor visa se tornar uma plataforma completa onde usuários possam não apenas visualizar, mas também implementar suas ideias de aplicativos. Através de uma jornada guiada e interativa, pretendemos coletar insights valiosos sobre preferências de design e interação, permitindo uma experiência verdadeiramente personalizada de criação de apps.
-
-Nossa meta é eliminar a barreira entre ideação e implementação, permitindo que qualquer pessoa possa transformar sua visão em realidade, independente de conhecimento técnico.
-
-## 📞 Suporte
-
-Para suporte, dúvidas ou sugestões, por favor abra uma issue no repositório ou entre em contato através de nossos canais oficiais.
-
----
-
-Feito com ❤️ pela equipe Creative Vibe
+Este projeto está sob a licença MIT.
