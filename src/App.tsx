@@ -7,6 +7,9 @@ import Home from "./pages/Home";
 import Editor from "./pages/Editor";
 import Onboarding from "./pages/Onboarding";
 import Customize from "./pages/Customize";
+import EntertainmentCustomize from "./pages/EntertainmentCustomize";
+import EducationCustomize from "./pages/EducationCustomize";
+import HealthCustomize from "./pages/HealthCustomize";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +24,9 @@ const App = () => (
             <Route path="/editor" element={<Editor />} />
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/customize" element={<Customize />} />
+            <Route path="/entertainment-customize" element={<EntertainmentCustomize />} />
+            <Route path="/education-customize" element={<EducationCustomize />} />
+            <Route path="/health-customize" element={<HealthCustomize />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
