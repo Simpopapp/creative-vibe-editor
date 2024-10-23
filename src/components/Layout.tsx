@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export const Layout = ({ children, highlightThemeSwitcher = false }: { 
+  children: React.ReactNode;
+  highlightThemeSwitcher?: boolean;
+}) => {
   return (
     <div className="min-h-screen bg-background">
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-sm border-b">
@@ -13,7 +16,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           >
             Akalibre Flow
           </motion.h1>
-          <ThemeSwitcher />
+          <ThemeSwitcher highlight={highlightThemeSwitcher} />
         </div>
       </nav>
       <main className="container mx-auto px-4 pt-20">

@@ -16,7 +16,7 @@ const Onboarding = () => {
   };
 
   return (
-    <Layout>
+    <Layout highlightThemeSwitcher>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -29,9 +29,17 @@ const Onboarding = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl font-bold mb-4">Que tipo de app você quer criar?</h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg mb-2">
             Escolha uma categoria para começar sua jornada
           </p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="text-sm text-purple-500"
+          >
+            Dica: Você pode alterar o tema do app a qualquer momento no ícone acima! 
+          </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
