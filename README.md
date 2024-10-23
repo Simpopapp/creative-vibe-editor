@@ -4,19 +4,14 @@ Um editor visual imersivo para criação de aplicativos, com feedback sonoro e v
 
 ## Alterações Recentes
 
-### Última atualização (TypeScript Fix)
-- Corrigido o tipo do parâmetro `theme` no componente ThemeSwitcher
-- Adicionado tipagem específica para os temas disponíveis
-- Resolvido erro de build relacionado à tipagem do tema
+### Última atualização (Suporte Mobile)
+- Adicionado suporte para desenvolvimento mobile com Capacitor
+- Configurado build para Android e iOS
+- Corrigido problema de configuração do Capacitor
 
 ## Como Rodar o Projeto
 
-### Pré-requisitos
-- Node.js (versão 16 ou superior)
-- npm, yarn ou bun
-
-### Passo a Passo
-
+### Web (Desenvolvimento)
 1. **Clone o repositório**
 ```bash
 git clone [url-do-repositorio]
@@ -41,14 +36,44 @@ yarn dev
 bun dev
 ```
 
-4. **Acesse o projeto**
-- Abra seu navegador e acesse `http://localhost:5173`
+### Mobile (Android/iOS)
 
-### Comandos Úteis
+1. **Instale o Capacitor globalmente**
+```bash
+npm install -g @capacitor/cli
+```
 
-- `npm run dev` - Inicia o servidor de desenvolvimento
-- `npm run build` - Cria a versão de produção
-- `npm run preview` - Visualiza a versão de produção localmente
+2. **Instale as dependências do Capacitor**
+```bash
+npm install @capacitor/core @capacitor/cli
+npm install @capacitor/android @capacitor/ios
+```
+
+3. **Faça o build do projeto**
+```bash
+npm run build
+```
+
+4. **Adicione as plataformas**
+```bash
+npx cap add android
+npx cap add ios
+```
+
+5. **Sincronize o build com as plataformas nativas**
+```bash
+npx cap sync
+```
+
+6. **Abra no Android Studio**
+```bash
+npx cap open android
+```
+
+7. **Abra no Xcode (macOS apenas)**
+```bash
+npx cap open ios
+```
 
 ## Estrutura do Projeto
 
@@ -66,6 +91,23 @@ src/
 
 ## Troubleshooting
 
-Se encontrar o erro "Theme type mismatch":
-1. Verifique se está usando um dos temas disponíveis: "light", "dark" ou "neon"
-2. Certifique-se de que o ThemeSwitcher está importando corretamente o tipo Theme
+### Problemas Comuns
+
+1. **Erro de configuração do Capacitor**
+   - Certifique-se de que o arquivo `capacitor.config.json` está na raiz do projeto
+   - Execute `npx cap sync` após qualquer alteração na configuração
+
+2. **Build não atualiza**
+   - Execute `npm run build` antes de `npx cap sync`
+   - Limpe o cache do navegador se estiver testando a versão web
+
+3. **Android Studio não reconhece o projeto**
+   - Execute `npx cap sync` novamente
+   - Verifique se o Android Studio e o SDK estão atualizados
+
+### Requisitos do Sistema
+
+- Node.js (versão 16 ou superior)
+- Android Studio (para desenvolvimento Android)
+- Xcode (para desenvolvimento iOS - apenas macOS)
+- JDK 11 ou superior (para Android)
