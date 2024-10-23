@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { usePerformanceMonitor } from "@/hooks/usePerformanceMonitor";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Activity, Cpu, Memory, Wifi, AlertTriangle, Trash2 } from "lucide-react";
+import { Activity, Cpu, Database, Wifi, AlertTriangle, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 const PerformanceMonitor = () => {
@@ -53,7 +53,7 @@ const PerformanceMonitor = () => {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium">Memory Usage</CardTitle>
-                <Memory className="w-4 h-4 text-muted-foreground" />
+                <Database className="w-4 h-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{systemHealth.memory.toFixed(1)}%</div>
