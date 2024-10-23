@@ -27,6 +27,39 @@ yarn
 bun install
 ```
 
+## Integrando o Editor Imersivo
+
+Para integrar o editor imersivo como uma nova página mantendo o layout original:
+
+1. **Configurar Rotas**:
+   - Manter a página inicial (`/`) com o layout original
+   - Adicionar uma nova rota `/editor` para o editor imersivo
+   - Usar o React Router para navegação entre páginas
+
+2. **Modificar a Página Inicial**:
+   - Adicionar um botão "Abrir Editor Imersivo" na página inicial
+   - O botão deve redirecionar para `/editor` usando `useNavigate` do React Router
+
+3. **Estrutura de Arquivos Sugerida**:
+```
+src/
+  ├── pages/
+  │   ├── Home/             # Página inicial original
+  │   └── Editor/           # Nova página do editor imersivo
+  └── components/
+      └── shared/           # Componentes compartilhados
+```
+
+4. **Exemplo de Código para o Botão**:
+```jsx
+import { useNavigate } from 'react-router-dom';
+
+const navigate = useNavigate();
+<Button onClick={() => navigate('/editor')}>
+  Abrir Editor Imersivo
+</Button>
+```
+
 ## Funcionalidades
 
 ### Temas e Cores
@@ -77,6 +110,11 @@ src/
 3. **Temas não mudam instantaneamente**:
    - Isso é esperado devido à transição suave (1000ms)
    - Aguarde a conclusão da animação
+
+4. **Problemas de Roteamento**:
+   - Certifique-se de que o React Router está configurado corretamente
+   - Verifique se todas as rotas estão definidas no arquivo de rotas
+   - Confirme se os componentes estão sendo importados corretamente
 
 ## Contribuindo
 
