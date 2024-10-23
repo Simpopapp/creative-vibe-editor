@@ -5,10 +5,12 @@ import { templates, Template } from "@/types/templates";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useAppPreferences } from "@/hooks/useAppPreferences";
+import { useSound } from 'use-sound';
 
 export const TemplateSelector = () => {
   const navigate = useNavigate();
   const { updatePreferences } = useAppPreferences();
+  const [playHover] = useSound('/sounds/select.mp3', { volume: 0.25 });
 
   const handleTemplateSelect = (template: Template) => {
     updatePreferences({
@@ -17,25 +19,37 @@ export const TemplateSelector = () => {
         ...template.presetConfig
       }
     });
-    toast.success("Template selecionado! Personalize-o como desejar.");
+    toast.success("✨ Excelente escolha! Vamos personalizar ainda mais?", {
+      duration: 3000,
+    });
     navigate(`/customize/${template.type}`);
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
       {templates.map((template) => (
         <motion.div
           key={template.id}
-          whileHover={{ scale: 1.02 }}
+          whileHover={{ scale: 1.03, y: -5 }}
           whileTap={{ scale: 0.98 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
         >
-          <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow">
+          <Card 
+            className="overflow-hidden cursor-pointer group relative"
+            onMouseEnter={playHover}
+          >
             <CardContent className="p-0">
-              <div className="aspect-video bg-muted relative">
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-xl font-semibold mb-2">{template.name}</h3>
-                  <p className="text-sm text-muted-foreground">{template.description}</p>
+              <div className="aspect-video bg-gradient-to-br from-background via-muted to-accent relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90 group-hover:opacity-75 transition-opacity" />
+                <div className="absolute bottom-4 left-4 right-4 z-10">
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    {template.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                    {template.description}
+                  </p>
                 </div>
               </div>
               <div className="p-4">
@@ -43,17 +57,17 @@ export const TemplateSelector = () => {
                   {template.presetConfig.features.map((feature) => (
                     <span
                       key={feature}
-                      className="text-xs bg-muted px-2 py-1 rounded-full"
+                      className="text-xs bg-muted px-3 py-1 rounded-full text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors"
                     >
                       {feature}
                     </span>
                   ))}
                 </div>
                 <Button
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transform transition-all duration-300 opacity-90 group-hover:opacity-100"
                   onClick={() => handleTemplateSelect(template)}
                 >
-                  Usar Template
+                  Explorar Template
                 </Button>
               </div>
             </CardContent>
