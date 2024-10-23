@@ -9,6 +9,7 @@ import ThemeLocation from "./pages/ThemeLocation";
 import Onboarding from "./pages/Onboarding";
 import LayoutCustomize from "./pages/LayoutCustomize";
 import FontCustomize from "./pages/FontCustomize";
+import ColorPaletteCustomize from "./pages/ColorPaletteCustomize";
 import EntertainmentCustomize from "./pages/EntertainmentCustomize";
 import EducationCustomize from "./pages/EducationCustomize";
 import HealthCustomize from "./pages/HealthCustomize";
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/customize/layout" element={<LayoutCustomize />} />
             <Route path="/customize/font" element={<FontCustomize />} />
+            <Route path="/customize/colors" element={<ColorPaletteCustomize />} />
             <Route path="/customize/entertainment" element={<EntertainmentCustomize />} />
             <Route path="/customize/education" element={<EducationCustomize />} />
             <Route path="/customize/health" element={<HealthCustomize />} />
