@@ -1,50 +1,83 @@
-# React + TypeScript + Vite
+# Creative Vibe Editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um editor visual imersivo para criação de aplicativos, com feedback sonoro e visual.
 
-Currently, two official plugins are available:
+## Configuração Inicial
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Arquivos de Som
+Para que os efeitos sonoros funcionem corretamente:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Crie uma pasta `sounds` dentro do diretório `public` se ela ainda não existir:
+```bash
+mkdir -p public/sounds
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Adicione um arquivo de som chamado `select.mp3` na pasta `public/sounds`. Este arquivo será usado para feedback sonoro quando o usuário fizer seleções na interface.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+> **Nota**: Você pode usar qualquer efeito sonoro curto (0.5-1s) no formato MP3. Recomendamos sons sutis e agradáveis para não cansar o usuário.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 2. Dependências
+O projeto utiliza a biblioteca `use-sound` para gerenciar efeitos sonoros. Esta dependência já está configurada no `package.json`, mas você precisa instalar as dependências do projeto:
+
+```bash
+npm install
+# ou
+yarn
+# ou
+bun install
 ```
+
+## Funcionalidades
+
+### Temas e Cores
+- O sistema suporta três temas: Modern, Minimal e Neon
+- Esquemas de cores disponíveis: Claro, Escuro e Neon
+- As mudanças de tema e cor afetam todo o ambiente visual da aplicação
+
+### Feedback Sonoro
+- Efeitos sonoros são reproduzidos ao selecionar temas e cores
+- O volume padrão está configurado para 50% (0.5)
+
+### Animações
+- Transições suaves entre estados usando Framer Motion
+- Feedback visual ao passar o mouse sobre elementos interativos
+- Mudanças graduais de background ao alterar temas
+
+## Estrutura do Projeto
+
+```
+public/
+  └── sounds/
+      └── select.mp3    # Efeito sonoro para seleções
+src/
+  ├── components/       # Componentes reutilizáveis
+  ├── pages/           # Páginas da aplicação
+  └── hooks/           # Hooks personalizados
+```
+
+## Próximos Passos
+
+1. Adicione mais variações de efeitos sonoros para diferentes tipos de interação
+2. Expanda os temas disponíveis
+3. Adicione mais opções de personalização
+
+## Troubleshooting
+
+### Problemas Comuns
+
+1. **Som não funciona**: 
+   - Verifique se o arquivo `select.mp3` está presente em `public/sounds/`
+   - Confirme se o volume do sistema está ativado
+   - Verifique se não há erros no console do navegador
+
+2. **Animações lentas**: 
+   - Reduza a quantidade de elementos animados simultaneamente
+   - Verifique o desempenho do dispositivo
+
+3. **Temas não mudam instantaneamente**:
+   - Isso é esperado devido à transição suave (1000ms)
+   - Aguarde a conclusão da animação
+
+## Contribuindo
+
+Sinta-se à vontade para contribuir com o projeto através de pull requests ou reportando issues.
