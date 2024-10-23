@@ -2,23 +2,28 @@
 
 Um editor visual imersivo para criação de aplicativos, com feedback sonoro e visual.
 
-## Configuração Inicial
+## Alterações Recentes
 
-### 1. Arquivos de Som
-Para que os efeitos sonoros funcionem corretamente:
+### Última atualização (TypeScript Fix)
+- Corrigido o tipo do parâmetro `theme` no componente ThemeSwitcher
+- Adicionado tipagem específica para os temas disponíveis
+- Resolvido erro de build relacionado à tipagem do tema
 
-1. Crie uma pasta `sounds` dentro do diretório `public` se ela ainda não existir:
+## Como Rodar o Projeto
+
+### Pré-requisitos
+- Node.js (versão 16 ou superior)
+- npm, yarn ou bun
+
+### Passo a Passo
+
+1. **Clone o repositório**
 ```bash
-mkdir -p public/sounds
+git clone [url-do-repositorio]
+cd creative-vibe-editor
 ```
 
-2. Adicione um arquivo de som chamado `select.mp3` na pasta `public/sounds`. Este arquivo será usado para feedback sonoro quando o usuário fizer seleções na interface.
-
-> **Nota**: Você pode usar qualquer efeito sonoro curto (0.5-1s) no formato MP3. Recomendamos sons sutis e agradáveis para não cansar o usuário.
-
-### 2. Dependências
-O projeto utiliza a biblioteca `use-sound` para gerenciar efeitos sonoros. Esta dependência já está configurada no `package.json`, mas você precisa instalar as dependências do projeto:
-
+2. **Instale as dependências**
 ```bash
 npm install
 # ou
@@ -27,95 +32,40 @@ yarn
 bun install
 ```
 
-## Integrando o Editor Imersivo
-
-Para integrar o editor imersivo como uma nova página mantendo o layout original:
-
-1. **Configurar Rotas**:
-   - Manter a página inicial (`/`) com o layout original
-   - Adicionar uma nova rota `/editor` para o editor imersivo
-   - Usar o React Router para navegação entre páginas
-
-2. **Modificar a Página Inicial**:
-   - Adicionar um botão "Abrir Editor Imersivo" na página inicial
-   - O botão deve redirecionar para `/editor` usando `useNavigate` do React Router
-
-3. **Estrutura de Arquivos Sugerida**:
-```
-src/
-  ├── pages/
-  │   ├── Home/             # Página inicial original
-  │   └── Editor/           # Nova página do editor imersivo
-  └── components/
-      └── shared/           # Componentes compartilhados
+3. **Inicie o servidor de desenvolvimento**
+```bash
+npm run dev
+# ou
+yarn dev
+# ou
+bun dev
 ```
 
-4. **Exemplo de Código para o Botão**:
-```jsx
-import { useNavigate } from 'react-router-dom';
+4. **Acesse o projeto**
+- Abra seu navegador e acesse `http://localhost:5173`
 
-const navigate = useNavigate();
-<Button onClick={() => navigate('/editor')}>
-  Abrir Editor Imersivo
-</Button>
-```
+### Comandos Úteis
 
-## Funcionalidades
-
-### Temas e Cores
-- O sistema suporta três temas: Modern, Minimal e Neon
-- Esquemas de cores disponíveis: Claro, Escuro e Neon
-- As mudanças de tema e cor afetam todo o ambiente visual da aplicação
-
-### Feedback Sonoro
-- Efeitos sonoros são reproduzidos ao selecionar temas e cores
-- O volume padrão está configurado para 50% (0.5)
-
-### Animações
-- Transições suaves entre estados usando Framer Motion
-- Feedback visual ao passar o mouse sobre elementos interativos
-- Mudanças graduais de background ao alterar temas
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Cria a versão de produção
+- `npm run preview` - Visualiza a versão de produção localmente
 
 ## Estrutura do Projeto
 
 ```
-public/
-  └── sounds/
-      └── select.mp3    # Efeito sonoro para seleções
 src/
-  ├── components/       # Componentes reutilizáveis
-  ├── pages/           # Páginas da aplicação
-  └── hooks/           # Hooks personalizados
+  ├── components/      # Componentes reutilizáveis
+  ├── pages/          # Páginas da aplicação
+  └── hooks/          # Hooks personalizados
 ```
 
-## Próximos Passos
-
-1. Adicione mais variações de efeitos sonoros para diferentes tipos de interação
-2. Expanda os temas disponíveis
-3. Adicione mais opções de personalização
+## Temas Disponíveis
+- Light (Claro)
+- Dark (Escuro)
+- Neon
 
 ## Troubleshooting
 
-### Problemas Comuns
-
-1. **Som não funciona**: 
-   - Verifique se o arquivo `select.mp3` está presente em `public/sounds/`
-   - Confirme se o volume do sistema está ativado
-   - Verifique se não há erros no console do navegador
-
-2. **Animações lentas**: 
-   - Reduza a quantidade de elementos animados simultaneamente
-   - Verifique o desempenho do dispositivo
-
-3. **Temas não mudam instantaneamente**:
-   - Isso é esperado devido à transição suave (1000ms)
-   - Aguarde a conclusão da animação
-
-4. **Problemas de Roteamento**:
-   - Certifique-se de que o React Router está configurado corretamente
-   - Verifique se todas as rotas estão definidas no arquivo de rotas
-   - Confirme se os componentes estão sendo importados corretamente
-
-## Contribuindo
-
-Sinta-se à vontade para contribuir com o projeto através de pull requests ou reportando issues.
+Se encontrar o erro "Theme type mismatch":
+1. Verifique se está usando um dos temas disponíveis: "light", "dark" ou "neon"
+2. Certifique-se de que o ThemeSwitcher está importando corretamente o tipo Theme
