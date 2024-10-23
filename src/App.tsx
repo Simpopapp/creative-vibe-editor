@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import Home from "./pages/Home";
 import InitialCustomize from "./pages/InitialCustomize";
+import ThemeLocation from "./pages/ThemeLocation";
 import Onboarding from "./pages/Onboarding";
 import EntertainmentCustomize from "./pages/EntertainmentCustomize";
 import EducationCustomize from "./pages/EducationCustomize";
@@ -22,6 +23,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/customize/initial" element={<InitialCustomize />} />
+            <Route path="/customize/theme-location" element={<ThemeLocation />} />
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/customize/entertainment" element={<EntertainmentCustomize />} />
             <Route path="/customize/education" element={<EducationCustomize />} />

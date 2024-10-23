@@ -15,12 +15,12 @@ const InitialCustomize = () => {
 
   const handleThemeSelect = (newTheme: "light" | "dark" | "neon") => {
     setTheme(newTheme);
+    toast.success("Tema alterado com sucesso! 🎨");
   };
 
   const handleContinue = () => {
     playSuccess();
-    navigate("/onboarding");
-    toast.success("Ótimo! Agora vamos descobrir mais sobre o app dos seus sonhos.");
+    navigate("/customize/theme-location");
   };
 
   return (
@@ -40,17 +40,9 @@ const InitialCustomize = () => {
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
               Personalize seu App
             </h1>
-            <p className="text-muted-foreground text-lg mb-2">
-              Comece escolhendo um tema que combine com seu estilo
+            <p className="text-muted-foreground text-lg">
+              Vamos começar escolhendo um tema que combine com seu estilo
             </p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="text-sm text-purple-500"
-            >
-              Dica: Você poderá alterar o tema a qualquer momento no ícone acima! 
-            </motion.p>
           </motion.div>
 
           <Card className="p-6">
@@ -68,7 +60,7 @@ const InitialCustomize = () => {
               onClick={handleContinue}
               className="text-lg px-8 py-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300"
             >
-              Continuar Personalizando
+              Continuar
             </Button>
           </motion.div>
         </div>
