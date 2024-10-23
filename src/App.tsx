@@ -11,6 +11,7 @@ import EntertainmentCustomize from "./pages/EntertainmentCustomize";
 import EducationCustomize from "./pages/EducationCustomize";
 import HealthCustomize from "./pages/HealthCustomize";
 import Preview from "./pages/Preview";
+import LayoutCustomize from "./pages/LayoutCustomize";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/customize/initial" element={<InitialCustomize />} />
             <Route path="/customize/theme-location" element={<ThemeLocation />} />
             <Route path="/onboarding" element={<Onboarding />} />
+            <Route path="/customize/layout" element={<LayoutCustomize />} />
             <Route path="/customize/entertainment" element={<EntertainmentCustomize />} />
             <Route path="/customize/education" element={<EducationCustomize />} />
             <Route path="/customize/health" element={<HealthCustomize />} />
