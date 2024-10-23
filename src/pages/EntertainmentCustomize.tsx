@@ -2,51 +2,57 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/Layout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { useState } from "react";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useNavigate } from "react-router-dom";
-
-type LayoutType = "social" | "streaming" | "gaming" | null;
-type ServiceType = "spotify" | "youtube" | "twitch" | null;
-
-interface EntertainmentPreferences {
-  layout: LayoutType;
-  service: ServiceType;
-  interactionDetails: string;
-}
+import { useAppPreferences } from "@/hooks/useAppPreferences";
+import { useEffect } from "react";
 
 const EntertainmentCustomize = () => {
   const navigate = useNavigate();
-  const [preferences, setPreferences] = useLocalStorage<EntertainmentPreferences>("entertainment-preferences", {
-    layout: null,
-    service: null,
-    interactionDetails: "",
-  });
+  const { preferences, updatePreferences } = useAppPreferences();
 
-  const handleLayoutSelect = (layout: LayoutType) => {
-    setPreferences({ ...preferences, layout });
+  useEffect(() => {
+    if (preferences.type !== "entertainment") {
+      navigate("/onboarding");
+    }
+  }, [preferences.type, navigate]);
+
+  const handleLayoutSelect = (layout: "social" | "streaming" | "gaming") => {
+    updatePreferences({
+      entertainment: {
+        ...preferences.entertainment,
+        layout
+      }
+    });
     toast.success(`Layout ${layout} selecionado!`);
   };
 
-  const handleServiceSelect = (service: ServiceType) => {
-    setPreferences({ ...preferences, service });
+  const handleServiceSelect = (service: "spotify" | "youtube" | "twitch") => {
+    updatePreferences({
+      entertainment: {
+        ...preferences.entertainment,
+        service
+      }
+    });
     toast.success(`Serviço ${service} será integrado!`);
   };
 
-  const handleInteractionDetailsChange = (value: string) => {
-    setPreferences({ ...preferences, interactionDetails: value });
+  const handleDetailsChange = (details: string) => {
+    updatePreferences({
+      entertainment: {
+        ...preferences.entertainment,
+        interactionDetails: details
+      }
+    });
   };
 
   const handleNext = () => {
-    if (!preferences.layout || !preferences.service) {
-      toast.error("Por favor, selecione um layout e um serviço antes de continuar.");
+    if (!preferences.entertainment?.layout || !preferences.entertainment?.service) {
+      toast.error("Por favor, complete todas as escolhas antes de continuar.");
       return;
     }
-    toast.success("Preferências salvas! Vamos para o próximo passo.");
-    navigate("/education-customize");
+    navigate("/customize/preview");
   };
 
   return (

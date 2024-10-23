@@ -3,11 +3,14 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useAppPreferences } from "@/hooks/useAppPreferences";
 
 const Index = () => {
   const navigate = useNavigate();
+  const { updatePreferences } = useAppPreferences();
 
   const handleStart = () => {
+    updatePreferences({ type: null }); // Reset preferences when starting new
     toast.success("Bem-vindo à jornada de criação!");
     navigate("/onboarding");
   };
