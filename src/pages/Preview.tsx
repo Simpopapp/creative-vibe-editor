@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAppSound } from "@/hooks/useAppSound";
 import { Download, ArrowLeft } from "lucide-react";
+import { SuggestionsPanel } from "@/components/SuggestionsPanel";
 
 const Preview = () => {
   const { preferences } = useAppPreferences();
@@ -24,7 +25,6 @@ const Preview = () => {
   const handleExport = () => {
     playSuccess();
     toast.success("Iniciando exportação do seu app!");
-    // Implementação futura da exportação
   };
 
   const renderPreviewContent = () => {
@@ -70,28 +70,38 @@ const Preview = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="min-h-[calc(100vh-5rem)] p-6"
+        className="min-h-[calc(100vh-5rem)] p-6 space-y-8"
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto space-y-8">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
+            className="text-center"
           >
-            <h1 className="text-4xl font-bold mb-8">Preview do seu App</h1>
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Seu App Está Quase Pronto!
+            </h1>
+            <p className="text-muted-foreground text-lg">
+              Confira as sugestões personalizadas baseadas nas suas escolhas
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <Card>
+            <Card className="overflow-hidden border-none bg-gradient-to-br from-background via-background to-muted">
               <CardContent className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">Suas Escolhas</h2>
+                <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                  Suas Escolhas
+                </h2>
                 {renderPreviewContent()}
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="overflow-hidden border-none bg-gradient-to-br from-background via-background to-muted">
               <CardContent className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">Visualização</h2>
+                <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                  Visualização
+                </h2>
                 <div className="aspect-[9/16] rounded-lg border bg-card flex items-center justify-center bg-gradient-to-br from-background to-muted">
                   <motion.div
                     initial={{ scale: 0.95, opacity: 0 }}
@@ -107,7 +117,9 @@ const Preview = () => {
             </Card>
           </div>
 
-          <div className="flex justify-between items-center">
+          <SuggestionsPanel />
+
+          <div className="flex justify-between items-center pt-8">
             <Button 
               variant="outline" 
               onClick={() => {
