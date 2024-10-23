@@ -40,6 +40,18 @@ export const templates: Template[] = [
 
 export type StudyTheme = "programming" | "design" | "data" | "languages" | "music" | "general" | null;
 
+export interface StudyGoal {
+  id: string;
+  title: string;
+  hoursPerWeek: number;
+  reminder: boolean;
+}
+
+export interface Schedule {
+  type: "flexible" | "fixed" | "hybrid";
+  goals: StudyGoal[];
+}
+
 export interface EducationPreferences {
   courseType: "video" | "podcast" | "text" | null;
   gamification: "badges" | "quizzes" | "leaderboard" | null;
@@ -48,6 +60,8 @@ export interface EducationPreferences {
   hasCustomizedWidgets?: boolean;
   studyThemes?: StudyTheme[];
   suggestedWidgets?: string[];
+  studyGoals?: StudyGoal[];
+  schedule?: Schedule;
 }
 
 export type WidgetType = "chat" | "calendar" | "notes" | "timer" | null;
