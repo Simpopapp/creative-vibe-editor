@@ -23,36 +23,38 @@ import QualityDashboard from "./pages/QualityDashboard";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/customize/initial" element={<InitialCustomize />} />
-            <Route path="/customize/theme-location" element={<ThemeLocation />} />
-            <Route path="/onboarding" element={<Onboarding />} />
-            <Route path="/customize/layout" element={<LayoutCustomize />} />
-            <Route path="/customize/font" element={<FontCustomize />} />
-            <Route path="/customize/colors" element={<ColorPaletteCustomize />} />
-            <Route path="/customize/entertainment" element={<EntertainmentCustomize />} />
-            <Route path="/customize/education" element={<EducationCustomize />} />
-            <Route path="/customize/health" element={<HealthCustomize />} />
-            <Route path="/customize/schedule" element={<ScheduleCustomize />} />
-            <Route path="/customize/study-themes" element={<StudyThemesCustomize />} />
-            <Route path="/customize/widgets" element={<WidgetCustomize />} />
-            <Route path="/customize/preview" element={<Preview />} />
-            <Route path="/achievements" element={<Achievements />} />
-            <Route path="/performance" element={<PerformanceMonitor />} />
-            <Route path="/quality" element={<QualityDashboard />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </ThemeProvider>
-);
+function App() {
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/customize/initial" element={<InitialCustomize />} />
+              <Route path="/customize/theme-location" element={<ThemeLocation />} />
+              <Route path="/onboarding" element={<Onboarding />} />
+              <Route path="/customize/layout" element={<LayoutCustomize />} />
+              <Route path="/customize/font" element={<FontCustomize />} />
+              <Route path="/customize/colors" element={<ColorPaletteCustomize />} />
+              <Route path="/customize/entertainment" element={<EntertainmentCustomize />} />
+              <Route path="/customize/education" element={<EducationCustomize />} />
+              <Route path="/customize/health" element={<HealthCustomize />} />
+              <Route path="/customize/schedule" element={<ScheduleCustomize />} />
+              <Route path="/customize/study-themes" element={<StudyThemesCustomize />} />
+              <Route path="/customize/widgets" element={<WidgetCustomize />} />
+              <Route path="/customize/preview" element={<Preview />} />
+              <Route path="/achievements" element={<Achievements />} />
+              <Route path="/performance" element={<PerformanceMonitor />} />
+              <Route path="/quality" element={<QualityDashboard />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
+  );
+}
 
 export default App;
