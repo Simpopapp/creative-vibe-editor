@@ -17,6 +17,7 @@ import StudyThemesCustomize from "./pages/StudyThemesCustomize";
 import ScheduleCustomize from "./pages/ScheduleCustomize";
 import WidgetCustomize from "./pages/WidgetCustomize";
 import Preview from "./pages/Preview";
+import Achievements from "./pages/Achievements";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/customize/study-themes" element={<StudyThemesCustomize />} />
             <Route path="/customize/widgets" element={<WidgetCustomize />} />
             <Route path="/customize/preview" element={<Preview />} />
+            <Route path="/achievements" element={<Achievements />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
