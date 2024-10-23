@@ -5,24 +5,57 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/components/theme-provider";
 import { toast } from "sonner";
-import { Moon, Sun, Palette, Layers, Layout as LayoutIcon, Paintbrush } from "lucide-react";
+import { Moon, Sun, Palette, Layers, Layout as LayoutIcon, Paintbrush, Undo, RotateCcw, Wand2 } from "lucide-react";
 import { useAppSound } from "@/hooks/useAppSound";
+import { useState } from "react";
 
 const InitialCustomize = () => {
   const navigate = useNavigate();
-  const { setTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
   const { playSelect, playSuccess } = useAppSound();
+  const [history, setHistory] = useState<Array<{ type: string, value: any }>>([]);
+  const [scale, setScale] = useState(1);
+  const [rotation, setRotation] = useState(0);
 
-  const handleThemeSelect = (theme: "light" | "dark" | "neon") => {
-    setTheme(theme);
+  const handleThemeSelect = (newTheme: "light" | "dark" | "neon") => {
+    setHistory(prev => [...prev, { type: 'theme', value: theme }]);
+    setTheme(newTheme);
     playSelect();
-    toast.success(`Tema ${theme} selecionado! Vamos continuar personalizando seu app.`);
+    toast.success(`Tema ${newTheme} selecionado! Vamos continuar personalizando seu app.`);
   };
 
   const handleContinue = () => {
     playSuccess();
     navigate("/onboarding");
     toast.success("Ótimo! Agora vamos descobrir mais sobre o app dos seus sonhos.");
+  };
+
+  const handleUndo = () => {
+    const lastAction = history[history.length - 1];
+    if (lastAction) {
+      if (lastAction.type === 'theme') {
+        setTheme(lastAction.value);
+      } else if (lastAction.type === 'scale') {
+        setScale(lastAction.value);
+      } else if (lastAction.type === 'rotation') {
+        setRotation(lastAction.value);
+      }
+      setHistory(prev => prev.slice(0, -1));
+      toast.info("Última ação desfeita!");
+      playSelect();
+    }
+  };
+
+  const handleScaleChange = (newScale: number) => {
+    setHistory(prev => [...prev, { type: 'scale', value: scale }]);
+    setScale(newScale);
+    playSelect();
+  };
+
+  const handleRotate = () => {
+    setHistory(prev => [...prev, { type: 'rotation', value: rotation }]);
+    setRotation(prev => prev + 90);
+    playSelect();
   };
 
   const customizationOptions = [
@@ -38,17 +71,17 @@ const InitialCustomize = () => {
       ]
     },
     {
+      id: "playground",
+      title: "Playground",
+      description: "Experimente algumas transformações",
+      icon: Wand2,
+      interactive: true
+    },
+    {
       id: "layout",
       title: "Layout",
       description: "Organize os elementos da sua interface",
       icon: LayoutIcon,
-      comingSoon: true
-    },
-    {
-      id: "components",
-      title: "Componentes",
-      description: "Personalize botões, cards e mais",
-      icon: Layers,
       comingSoon: true
     }
   ];
@@ -61,6 +94,24 @@ const InitialCustomize = () => {
         className="min-h-[calc(100vh-5rem)] p-6 bg-gradient-to-b from-background to-background/80"
       >
         <div className="max-w-4xl mx-auto space-y-8">
+          <div className="flex justify-end">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleUndo}
+              disabled={history.length === 0}
+              className="relative group"
+            >
+              <RotateCcw className="w-4 h-4" />
+              <span className="sr-only">Desfazer última ação</span>
+              {history.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground w-4 h-4 rounded-full text-xs flex items-center justify-center">
+                  {history.length}
+                </span>
+              )}
+            </Button>
+          </div>
+
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -82,6 +133,10 @@ const InitialCustomize = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
+                style={option.interactive ? { 
+                  transform: `scale(${scale}) rotate(${rotation}deg)`,
+                  transition: 'transform 0.3s ease'
+                } : undefined}
               >
                 <Card className="p-6">
                   <div className="flex items-center gap-4 mb-4">
@@ -115,6 +170,21 @@ const InitialCustomize = () => {
                           </Card>
                         </motion.div>
                       ))}
+                    </div>
+                  ) : option.interactive ? (
+                    <div className="flex gap-4 mt-4">
+                      <Button
+                        variant="outline"
+                        onClick={() => handleScaleChange(scale === 1 ? 0.9 : 1)}
+                      >
+                        {scale === 1 ? "Diminuir" : "Restaurar"} Tamanho
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={handleRotate}
+                      >
+                        Girar Card
+                      </Button>
                     </div>
                   ) : (
                     <div className="flex items-center justify-center h-24 bg-muted/50 rounded-lg">
