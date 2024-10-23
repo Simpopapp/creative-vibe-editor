@@ -3,20 +3,16 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { useAppPreferences } from "@/hooks/useAppPreferences";
-import { TemplateSelector } from "@/components/TemplateSelector";
 import { useAppSound } from "@/hooks/useAppSound";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { updatePreferences } = useAppPreferences();
   const { playSelect, playSuccess } = useAppSound();
 
   const handleStart = () => {
-    updatePreferences({ type: null });
     playSuccess();
-    toast.success("Vamos descobrir o app dos seus sonhos! 🚀");
-    navigate("/onboarding");
+    toast.success("Vamos começar a personalizar seu app! 🎨");
+    navigate("/customize/initial");
   };
 
   const container = {
@@ -62,16 +58,6 @@ const Home = () => {
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Transforme suas ideias em realidade com nossa plataforma intuitiva
           </p>
-        </motion.div>
-
-        <motion.div
-          variants={item}
-          className="w-full max-w-6xl"
-        >
-          <h2 className="text-3xl font-semibold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Templates Populares
-          </h2>
-          <TemplateSelector />
         </motion.div>
 
         <motion.div
