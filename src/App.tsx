@@ -19,6 +19,7 @@ import WidgetCustomize from "./pages/WidgetCustomize";
 import Preview from "./pages/Preview";
 import Achievements from "./pages/Achievements";
 import PerformanceMonitor from "./pages/PerformanceMonitor";
+import QualityDashboard from "./pages/QualityDashboard";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/customize/preview" element={<Preview />} />
             <Route path="/achievements" element={<Achievements />} />
             <Route path="/performance" element={<PerformanceMonitor />} />
+            <Route path="/quality" element={<QualityDashboard />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
