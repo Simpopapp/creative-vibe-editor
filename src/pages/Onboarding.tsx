@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/Layout";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +15,7 @@ const Onboarding = () => {
     setSelectedType(type);
     toast.success("Ótima escolha! Vamos personalizar seu app.");
     setTimeout(() => {
-      navigate("/customize");
+      navigate(`/customize/${type}`);
     }, 1500);
   };
 
