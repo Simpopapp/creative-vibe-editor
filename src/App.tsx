@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import Home from "./pages/Home";
 import InitialCustomize from "./pages/InitialCustomize";
@@ -25,16 +25,16 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
         <TooltipProvider>
-          <Toaster />
           <BrowserRouter>
+            <Toaster />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/customize/initial" element={<InitialCustomize />} />
               <Route path="/customize/theme-location" element={<ThemeLocation />} />
-              <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/customize/layout" element={<LayoutCustomize />} />
               <Route path="/customize/font" element={<FontCustomize />} />
               <Route path="/customize/colors" element={<ColorPaletteCustomize />} />
@@ -48,12 +48,11 @@ function App() {
               <Route path="/achievements" element={<Achievements />} />
               <Route path="/performance" element={<PerformanceMonitor />} />
               <Route path="/quality" element={<QualityDashboard />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 
