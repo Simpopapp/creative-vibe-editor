@@ -26,14 +26,17 @@ export function ThemeSwitcher({ highlight = false }: { highlight?: boolean }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute -left-16 top-1/2 -translate-y-1/2"
+          className="absolute -left-20 top-1/2 -translate-y-1/2"
         >
           <motion.div
             initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 1, times: [0, 0.2, 0.8, 1] }}
+            animate={{ x: 0, opacity: [0, 1, 1, 1, 0] }}
+            transition={{ 
+              duration: 3,
+              times: [0, 0.1, 0.5, 0.9, 1]
+            }}
           >
-            <ArrowRight className="w-8 h-8 text-primary" />
+            <ArrowRight className="w-10 h-10 text-primary" />
           </motion.div>
         </motion.div>
       )}
@@ -48,7 +51,7 @@ export function ThemeSwitcher({ highlight = false }: { highlight?: boolean }) {
           ]
         } : {}}
         transition={{ 
-          duration: 3,
+          duration: 4,
           repeat: 0,
           ease: "easeInOut"
         }}
