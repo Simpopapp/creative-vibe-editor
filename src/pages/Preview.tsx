@@ -6,10 +6,13 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
+import { useAppSound } from "@/hooks/useAppSound";
+import { Download, ArrowLeft } from "lucide-react";
 
 const Preview = () => {
   const { preferences } = useAppPreferences();
   const navigate = useNavigate();
+  const { playSuccess, playSelect } = useAppSound();
 
   useEffect(() => {
     if (!preferences.type) {
@@ -19,8 +22,9 @@ const Preview = () => {
   }, [preferences.type, navigate]);
 
   const handleExport = () => {
+    playSuccess();
     toast.success("Iniciando exportação do seu app!");
-    // Aqui implementaremos a lógica de exportação posteriormente
+    // Implementação futura da exportação
   };
 
   const renderPreviewContent = () => {
@@ -89,7 +93,15 @@ const Preview = () => {
               <CardContent className="p-6">
                 <h2 className="text-2xl font-semibold mb-4">Visualização</h2>
                 <div className="aspect-[9/16] rounded-lg border bg-card flex items-center justify-center bg-gradient-to-br from-background to-muted">
-                  <p className="text-muted-foreground">Preview Interativo em Desenvolvimento</p>
+                  <motion.div
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-center p-4"
+                  >
+                    <p className="text-muted-foreground mb-4">Preview Interativo em Desenvolvimento</p>
+                    <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-purple-500 to-pink-500 animate-pulse" />
+                  </motion.div>
                 </div>
               </CardContent>
             </Card>
@@ -98,14 +110,20 @@ const Preview = () => {
           <div className="flex justify-between items-center">
             <Button 
               variant="outline" 
-              onClick={() => navigate(`/customize/${preferences.type}`)}
+              onClick={() => {
+                playSelect();
+                navigate(`/customize/${preferences.type}`);
+              }}
+              className="flex items-center gap-2"
             >
+              <ArrowLeft className="w-4 h-4" />
               Voltar para Edição
             </Button>
             <Button
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 flex items-center gap-2"
               onClick={handleExport}
             >
+              <Download className="w-4 h-4" />
               Exportar App
             </Button>
           </div>

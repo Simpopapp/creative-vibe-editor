@@ -5,15 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useAppPreferences } from "@/hooks/useAppPreferences";
 import { TemplateSelector } from "@/components/TemplateSelector";
-import { useSound } from 'use-sound';
+import { useAppSound } from "@/hooks/useAppSound";
 
-const Index = () => {
+const Home = () => {
   const navigate = useNavigate();
   const { updatePreferences } = useAppPreferences();
-  const [playHover] = useSound('/sounds/select.mp3', { volume: 0.5 });
+  const { playSelect, playSuccess } = useAppSound();
 
   const handleStart = () => {
     updatePreferences({ type: null });
+    playSuccess();
     toast.success("Vamos descobrir o app dos seus sonhos! 🚀");
     navigate("/onboarding");
   };
@@ -55,11 +56,11 @@ const Index = () => {
             }}
           >
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              AKALIBRE FLOW
+              CREATIVE FLOW
             </h1>
           </motion.div>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Explore suas ideias e descubra o potencial do seu app ideal
+            Transforme suas ideias em realidade com nossa plataforma intuitiva
           </p>
         </motion.div>
 
@@ -68,7 +69,7 @@ const Index = () => {
           className="w-full max-w-6xl"
         >
           <h2 className="text-3xl font-semibold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Inspire-se com Nossos Templates
+            Templates Populares
           </h2>
           <TemplateSelector />
         </motion.div>
@@ -80,7 +81,7 @@ const Index = () => {
           <Button 
             size="lg" 
             onClick={handleStart}
-            onMouseEnter={playHover}
+            onMouseEnter={playSelect}
             className="text-lg px-8 py-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300"
           >
             Começar Minha Jornada
@@ -94,4 +95,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Home;
