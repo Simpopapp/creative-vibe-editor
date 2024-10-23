@@ -1,34 +1,42 @@
-# Creative Vibe Editor
+# 🎨 Creative Vibe Editor
 
-Um editor visual imersivo para criação de aplicativos, com feedback sonoro e visual.
+Uma plataforma interativa e imersiva que guia usuários através de uma jornada de descoberta para criar seus próprios aplicativos, sem necessidade de conhecimento técnico.
 
-## Alterações Recentes
+## 🌟 Visão Geral
 
-### Última atualização (Suporte Mobile)
-- Adicionado suporte para desenvolvimento mobile com Capacitor
-- Configurado build para Android e iOS
-- Corrigido problema de configuração do Capacitor
+O Creative Vibe Editor é uma ferramenta inovadora que combina design intuitivo, interações dinâmicas e feedback em tempo real para ajudar usuários a visualizarem e personalizarem seus aplicativos dos sonhos. Através de uma experiência gamificada e envolvente, os usuários exploram diferentes estilos, interações e preferências visuais, culminando em uma descrição personalizada de seu aplicativo ideal.
 
-## Como Rodar o Projeto
+## ✨ Características Principais
 
-### Web (Desenvolvimento)
-1. **Clone o repositório**
+- **Experiência Imersiva**: Animações fluidas e feedback sonoro em tempo real
+- **Design Responsivo**: Interface adaptável para todos os dispositivos
+- **Temas Dinâmicos**: Suporte para temas claro, escuro e neon
+- **Personalização Intuitiva**: Interface drag-and-drop e controles interativos
+- **Feedback Visual**: Notificações toast e indicadores de progresso
+- **Suporte Mobile**: Compatibilidade com Android e iOS via Capacitor
+
+## 🚀 Começando
+
+### Pré-requisitos
+
+- Node.js (versão 16 ou superior)
+- npm, yarn ou bun
+
+### Instalação
+
 ```bash
-git clone [url-do-repositorio]
+# Clone o repositório
+git clone https://github.com/Simpopapp/creative-vibe-editor.git
 cd creative-vibe-editor
-```
 
-2. **Instale as dependências**
-```bash
+# Instale as dependências
 npm install
 # ou
 yarn
 # ou
 bun install
-```
 
-3. **Inicie o servidor de desenvolvimento**
-```bash
+# Inicie o servidor de desenvolvimento
 npm run dev
 # ou
 yarn dev
@@ -36,78 +44,75 @@ yarn dev
 bun dev
 ```
 
-### Mobile (Android/iOS)
+### Build Mobile (Opcional)
 
-1. **Instale o Capacitor globalmente**
 ```bash
+# Instale o Capacitor globalmente
 npm install -g @capacitor/cli
-```
 
-2. **Instale as dependências do Capacitor**
-```bash
-npm install @capacitor/core @capacitor/cli
-npm install @capacitor/android @capacitor/ios
-```
-
-3. **Faça o build do projeto**
-```bash
+# Faça o build do projeto
 npm run build
-```
 
-4. **Adicione as plataformas**
-```bash
+# Adicione plataformas
 npx cap add android
 npx cap add ios
-```
 
-5. **Sincronize o build com as plataformas nativas**
-```bash
+# Sincronize o build
 npx cap sync
 ```
 
-6. **Abra no Android Studio**
-```bash
-npx cap open android
-```
+## 🛠️ Tecnologias
 
-7. **Abra no Xcode (macOS apenas)**
-```bash
-npx cap open ios
-```
+- **React**: Framework principal
+- **Vite**: Build tool e desenvolvimento
+- **Tailwind CSS**: Estilização
+- **Framer Motion**: Animações
+- **Shadcn/UI**: Componentes de UI
+- **Capacitor**: Suporte mobile
+- **React Router**: Navegação
+- **TanStack Query**: Gerenciamento de estado
 
-## Estrutura do Projeto
+## 🎯 Roadmap
 
-```
-src/
-  ├── components/      # Componentes reutilizáveis
-  ├── pages/          # Páginas da aplicação
-  └── hooks/          # Hooks personalizados
-```
+### Fase Atual
+- [x] Sistema de temas
+- [x] Navegação fluida
+- [x] Feedback sonoro e visual
+- [x] Componentes base
+- [x] Layout responsivo
 
-## Temas Disponíveis
-- Light (Claro)
-- Dark (Escuro)
-- Neon
+### Próximas Etapas
+- [ ] Sistema de exportação de configurações
+- [ ] Mais opções de personalização
+- [ ] Previews em tempo real
+- [ ] Templates pré-configurados
+- [ ] Integração com serviços externos
+- [ ] Sistema de compartilhamento
 
-## Troubleshooting
+## 🤝 Contribuindo
 
-### Problemas Comuns
+Contribuições são bem-vindas! Por favor, leia nosso guia de contribuição antes de submeter pull requests.
 
-1. **Erro de configuração do Capacitor**
-   - Certifique-se de que o arquivo `capacitor.config.json` está na raiz do projeto
-   - Execute `npx cap sync` após qualquer alteração na configuração
+1. Fork o projeto
+2. Crie sua branch de feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-2. **Build não atualiza**
-   - Execute `npm run build` antes de `npx cap sync`
-   - Limpe o cache do navegador se estiver testando a versão web
+## 📝 Licença
 
-3. **Android Studio não reconhece o projeto**
-   - Execute `npx cap sync` novamente
-   - Verifique se o Android Studio e o SDK estão atualizados
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-### Requisitos do Sistema
+## 🌟 Visão Futura
 
-- Node.js (versão 16 ou superior)
-- Android Studio (para desenvolvimento Android)
-- Xcode (para desenvolvimento iOS - apenas macOS)
-- JDK 11 ou superior (para Android)
+O Creative Vibe Editor visa se tornar uma plataforma completa onde usuários possam não apenas visualizar, mas também implementar suas ideias de aplicativos. Através de uma jornada guiada e interativa, pretendemos coletar insights valiosos sobre preferências de design e interação, permitindo uma experiência verdadeiramente personalizada de criação de apps.
+
+Nossa meta é eliminar a barreira entre ideação e implementação, permitindo que qualquer pessoa possa transformar sua visão em realidade, independente de conhecimento técnico.
+
+## 📞 Suporte
+
+Para suporte, dúvidas ou sugestões, por favor abra uma issue no repositório ou entre em contato através de nossos canais oficiais.
+
+---
+
+Feito com ❤️ pela equipe Creative Vibe
