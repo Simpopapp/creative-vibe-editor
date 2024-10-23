@@ -4,48 +4,44 @@ export interface Template {
   description: string;
   type: "entertainment" | "education" | "health";
   presetConfig: {
-    layout?: string;
-    theme?: string;
     features: string[];
   };
-  preview: string;
 }
 
 export const templates: Template[] = [
   {
-    id: "streaming-platform",
-    name: "Plataforma de Streaming",
-    description: "Template ideal para conteúdo em vídeo com interface moderna",
+    id: "template1",
+    name: "Template 1",
+    description: "Descrição do Template 1",
     type: "entertainment",
     presetConfig: {
-      layout: "streaming",
-      theme: "dark",
-      features: ["playlists", "categorias", "recomendações"]
+      features: ["Feature 1", "Feature 2"],
     },
-    preview: "/templates/streaming.png"
   },
   {
-    id: "fitness-tracker",
-    name: "Tracker de Fitness",
-    description: "App completo para acompanhamento de exercícios",
-    type: "health",
-    presetConfig: {
-      layout: "dashboard",
-      theme: "light",
-      features: ["progresso", "estatísticas", "planos"]
-    },
-    preview: "/templates/fitness.png"
-  },
-  {
-    id: "curso-interativo",
-    name: "Curso Interativo",
-    description: "Plataforma educacional gamificada",
+    id: "template2",
+    name: "Template 2",
+    description: "Descrição do Template 2",
     type: "education",
     presetConfig: {
-      layout: "modular",
-      theme: "neon",
-      features: ["quizzes", "conquistas", "ranking"]
+      features: ["Feature 1", "Feature 2"],
     },
-    preview: "/templates/course.png"
-  }
+  },
+  {
+    id: "template3",
+    name: "Template 3",
+    description: "Descrição do Template 3",
+    type: "health",
+    presetConfig: {
+      features: ["Feature 1", "Feature 2"],
+    },
+  },
+  // ... add more templates as needed
 ];
+
+export interface EducationPreferences {
+  courseType: "video" | "podcast" | "text" | null;
+  gamification: "badges" | "quizzes" | "leaderboard" | null;
+  schedule: "flexible" | "fixed" | "hybrid" | null;
+  interaction: "individual" | "group" | "mentored" | null;
+}
